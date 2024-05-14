@@ -100,11 +100,13 @@
     <pre id="editor" contenteditable="true"><code class="language-javascript"></code></pre>
     <iframe id="output"></iframe>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script>
         function runCode() {
             const code = document.getElementById('editor').textContent;
             const iframe = document.getElementById('output');
-            iframe.src = 'data:text/html;charset=utf-8,' + encodeURI(code);
+            iframe.src = 'data:text/html;charset=utf-8,' + encodeURI('<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script><style>' + prism.css + '</style><pre><code class="language-javascript">' + code + '</code></pre>');
+            Prism.highlightAll();
         }
 
         function openFile(filename) {
